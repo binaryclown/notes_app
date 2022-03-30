@@ -6,11 +6,11 @@ import java.util.Optional;
 public interface Dao<T> {
     Optional<T> get(long id);
 
-    List<T> getAll();
+    List<?> getAll();
 
-    void save(T t);
+    void save(T entity);
 
-    T update(T t);
+    T update(T entity);
 
-    void delete(T t);
+    void delete(T entity);
 }

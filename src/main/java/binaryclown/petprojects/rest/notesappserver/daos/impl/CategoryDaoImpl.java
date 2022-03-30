@@ -14,6 +14,9 @@ import java.util.Optional;
 @Repository
 public class CategoryDaoImpl implements Dao<Category> {
 
+    //QUERY
+    private static final String GET_LIST_CATEGORIES_QUERY = "SELECT categories FROM Category categories";
+
     private final EntityManager entityManager;
 
     @Autowired
@@ -27,8 +30,8 @@ public class CategoryDaoImpl implements Dao<Category> {
     }
 
     @Override
-    public List<Category> getAll() {
-        Query queryGetAll = entityManager.createQuery("SELECT e FROM Category e");
+    public List<?> getAll() {
+        Query queryGetAll = entityManager.createQuery(GET_LIST_CATEGORIES_QUERY);
         return queryGetAll.getResultList();
     }
 

@@ -14,6 +14,9 @@ import java.util.Optional;
 @Repository
 public class NoteDaoImpl implements Dao<Note> {
 
+    //QUERY
+    private static final String GET_LIST_NOTES_QUERY = "SELECT notes FROM Note notes";
+
     private final EntityManager entityManager;
 
     @Autowired
@@ -27,8 +30,8 @@ public class NoteDaoImpl implements Dao<Note> {
     }
 
     @Override
-    public List<Note> getAll() {
-        Query queryGetAll = entityManager.createQuery("SELECT e FROM Note e");
+    public List<?> getAll() {
+        Query queryGetAll = entityManager.createQuery(GET_LIST_NOTES_QUERY);
         return queryGetAll.getResultList();
     }
 
