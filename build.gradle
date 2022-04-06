@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.4'
+	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
@@ -31,3 +31,31 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task bootRunDev {
+	group = "application"
+	description = "Runs the Spring Boot application with the dev profile"
+	bootRun.configure {
+		systemProperty "spring.profiles.active", 'dev'
+	}
+	finalizedBy("bootRun")
+}
+
+task bootRunProd {
+	group = "application"
+	description = "Runs the Spring Boot application with the prod profile"
+	bootRun.configure {
+		systemProperty "spring.profiles.active", 'prod'
+	}
+	finalizedBy("bootRun")
+}
+
+task bootRunTest {
+	group = "application"
+	description = "Runs the Spring Boot application with the test profile"
+	bootRun.configure {
+		systemProperty "spring.profiles.active", 'test'
+	}
+	finalizedBy("bootRun")
+}
+
