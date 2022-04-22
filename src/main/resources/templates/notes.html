@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Заметки</title>
+        <h1>Заметки</h1>
+    </head>
+    <body>
+        <tr th:each="note : ${notes}">
+            <div class="note">
+                <div class="name-note">
+                    <td th:text="${note.name}"></td>
+                </div>
+                <div class="text-note">
+                    <td th:text="${note.text}"></td>
+                </div>
+            </div>
+            <br>
+        </tr>
+    </body>
+</html>
